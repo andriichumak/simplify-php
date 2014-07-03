@@ -42,4 +42,7 @@ $simplified = array(
 
 require 'Simplify.php';
 
-echo serialize($simplified) == serialize(Simplify::run($points, 5));
+
+// TODO PHPUnit
+echo serialize($simplified) == serialize(Simplify::run($points, 5)) ? 'pass' : 'fail';
+echo PHP_EOL;

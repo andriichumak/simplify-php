@@ -21,7 +21,7 @@ class Simplify {
 	public static function run(array $points, $tolerance = 1, $highestQuality = false) {
 		if (count($points) <= 1) return $points;
 
-		$sqTolerance = (int)$tolerance == $tolerance ? $tolerance : 1;
+		$sqTolerance = (int)$tolerance == $tolerance ? $tolerance*$tolerance : 1;
 
 		$points = $highestQuality ? $points : self::simplifyRadialDist($points, $sqTolerance);
 		$points = self::simplifyDouglasPeucker($points, $sqTolerance);
@@ -63,7 +63,7 @@ class Simplify {
 	private static function simplifyDouglasPeucker($points, $sqTolerance) {
 
 		$len = count($points);
-		$markers = Array($len);
+		$markers = array_fill(0, $len-1, null);
 		$first = 0;
 		$last = $len - 1;
 		$stack = [];
@@ -94,6 +94,7 @@ class Simplify {
 		    $first = array_pop($stack);
 	    }
 
+		//var_dump($markers, $points, $i);
 	    for ($i = 0; $i < $len; $i++) {
 		    if ($markers[$i]) $newPoints[] = $points[$i];
 	    }
