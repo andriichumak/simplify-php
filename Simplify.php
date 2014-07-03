@@ -14,14 +14,14 @@ class Simplify {
 
 	/**
 	 * @param array $points
-	 * @param float $tolerance
+	 * @param float|int $tolerance
 	 * @param bool $highestQuality
 	 * @return array
 	 */
-	public static function simplify(array $points, $tolerance, $highestQuality) {
+	public static function simplify(array $points, $tolerance = 1, $highestQuality = false) {
 		if (count($points) <= 1) return $points;
 
-		$sqTolerance = !empty($tolerance) ? $tolerance * $tolerance : 1;
+		$sqTolerance = (int)$tolerance == $tolerance ? $tolerance : 1;
 
 		$points = $highestQuality ? $points : self::simplifyRadialDist($points, $sqTolerance);
 		$points = self::simplifyDouglasPeucker($points, $sqTolerance);
