@@ -18,7 +18,7 @@ class Simplify {
 	 * @param bool $highestQuality
 	 * @return array
 	 */
-	public static function simplify(array $points, $tolerance = 1, $highestQuality = false) {
+	public static function run(array $points, $tolerance = 1, $highestQuality = false) {
 		if (count($points) <= 1) return $points;
 
 		$sqTolerance = (int)$tolerance == $tolerance ? $tolerance : 1;

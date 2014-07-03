@@ -42,4 +42,4 @@ $simplified = array(
 
 require 'Simplify.php';
 
-echo serialize($simplified) == serialize(Simplify::simplify($points, 5));
+echo serialize($simplified) == serialize(Simplify::run($points, 5));
