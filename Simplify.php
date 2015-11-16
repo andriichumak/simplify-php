@@ -66,8 +66,8 @@ class Simplify {
 		$markers = array_fill(0, $len-1, null);
 		$first = 0;
 		$last = $len - 1;
-		$stack = [];
-		$newPoints = [];
+		$stack = array();
+		$newPoints = array();
 		$index = null;
 
 	    $markers[$first] = $markers[$last] = 1;
