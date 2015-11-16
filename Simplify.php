@@ -21,7 +21,7 @@ class Simplify {
 	public static function run(array $points, $tolerance = 1, $highestQuality = false) {
 		if (count($points) <= 1) return $points;
 
-		$sqTolerance = (int)$tolerance == $tolerance ? $tolerance*$tolerance : 1;
+		$sqTolerance = $tolerance*$tolerance;
 
 		$points = $highestQuality ? $points : self::simplifyRadialDist($points, $sqTolerance);
 		$points = self::simplifyDouglasPeucker($points, $sqTolerance);
