@@ -109,7 +109,7 @@ class Simplify {
 		$dx = $p2['x'] - $x;
 		$dy = $p2['y'] - $y;
 
-		if ($dx !== 0 || $dy !== 0) {
+		if (intval($dx) !== 0 || intval($dy) !== 0) {
 
 			$t = (($p['x'] - $x) * $dx + ($p['y'] - $y) * $dy) / ($dx * $dx + $dy * $dy);
 
